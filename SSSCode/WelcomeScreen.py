@@ -10,8 +10,7 @@ from Modules import CreateFolders
 currentpath = os.path.realpath(__file__)
 graphicspath = re.split(r"(.*)\\WelcomeScreen.py", currentpath)
 graphicspath = graphicspath[1]
-print "path: ", graphicspath
-graphicspath = graphicspath+"\SSSAutomation\Developer"
+graphicspath = graphicspath+"\\GUI\images"
 
 
 if os.path.exists("C:\Python27"):
@@ -56,7 +55,7 @@ def welcome():
     #Draw the buzz logo and write the dedication information
     #buzzLogo
     #forTech
-    #buzzLogo = Image(Point(750, 460), graphicspath+"\\buzz.gif")
+    buzzLogo = Image(Point(710, 435), graphicspath+"\\buzz.gif")
 
     forTech = Text(Point(700, 510), "This software developed for \n Georgia Tech Housing"
         + ": Staff and \n Community Development")
@@ -129,7 +128,7 @@ def welcome():
 
 
     topBar.draw(win)
-    #buzzLogo.draw(win)
+    buzzLogo.draw(win)
     forTech.draw(win)
     message.draw(win)
     settingsText.draw(win)
@@ -152,6 +151,7 @@ def welcome():
                     #show an error message
                     ErrorMessage.showError("CSV file required.")
                 else:
+                    pass
                     #perform make directories on this file
 
             if 295 < p1.getY() < 370:
