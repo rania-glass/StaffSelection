@@ -17,9 +17,9 @@ with open(filename) as selected:
 #in the directory chosen by the user in settings
 currentpath = os.path.realpath(__file__)
 directorypath = re.split(r"(.*)\\SSSCode\\Modules\\ArchiveCandidates.py", currentpath)
-searchpath = directorypath[1] + "\\SSSCodeTestingMaterial\\StaffSelectionOutput\\Female"
-archivepath = directorypath[1] + "\\SSSCodeTestingMaterial\\StaffSelectionOutput\\Archived"
-
+#searchpath = directorypath[1] + "\\SSSCodeTestingMaterial\\StaffSelectionOutput\\Female"
+searchpath = "S:\Residence Life\Staff and Community Development\Staff Selection Files\\2016-2017 SSS Applications (current year)\Male"
+archivepath = "S:\Residence Life\Staff and Community Development\Staff Selection Files\\2016-2017 SSS Applications (current year)\Archived\Male"
 #generate a list of selected candidates in the format ["last name, first name", ...]
 namesList = []
 for candidate in range(len(selectedList)):
