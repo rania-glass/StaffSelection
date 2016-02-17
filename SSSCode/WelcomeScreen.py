@@ -1,7 +1,7 @@
 import os
 import re
 import shutil
-from GUI import ErrorMessage
+from GUI import ErrorMessage, ConfirmationMessage
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from Modules import CreateFolders
@@ -133,7 +133,6 @@ def welcome():
     message.draw(win)
     settingsText.draw(win)
 
-    switchClick = 0;
     while True:
         p1 = win.getMouse()
         if 268 < p1.getX() < 518:
@@ -151,7 +150,9 @@ def welcome():
                     #show an error message
                     ErrorMessage.showError("CSV file required.")
                 else:
-                    pass
+                    #module create directories.createFolders(masterList)
+                    ConfirmationMessage.showConfirmation("A directory was \n created"
+                        + " for each \n candidate in \n the list.")
                     #perform make directories on this file
 
             if 295 < p1.getY() < 370:

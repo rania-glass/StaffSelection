@@ -32,10 +32,10 @@ items = []
 for root, dirnames, filenames in os.walk(searchpath):
     for dirname in dirnames:
         dirpath = os.path.join(root, dirname)
-        items.append(dirpath)
+        items.append(dirpath.lower())
 
 
 for item in range(len(items)):
-    if items[item] not in namesList:
+    if items[item].lower() not in namesList:
         shutil.move(items[item], archivepath)
         print "Archived ", items[item][len(searchpath) + 1:]
