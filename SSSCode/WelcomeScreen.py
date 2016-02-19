@@ -150,7 +150,7 @@ def welcome():
                     #show an error message
                     ErrorMessage.showError("CSV file required.")
                 else:
-                    #module create directories.createFolders(masterList)
+                    CreateFolders.createFolders(masterList)
                     ConfirmationMessage.showConfirmation("A directory was \n created"
                         + " for each \n candidate in \n the list.")
                     #perform make directories on this file
