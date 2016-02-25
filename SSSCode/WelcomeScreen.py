@@ -151,8 +151,6 @@ def welcome():
                     ErrorMessage.showError("CSV file required.")
                 else:
                     CreateFolders.createFolders(masterList)
-                    ConfirmationMessage.showConfirmation("A directory was \n created"
-                        + " for each \n candidate in \n the list.")
                     #perform make directories on this file
 
             if 295 < p1.getY() < 370:

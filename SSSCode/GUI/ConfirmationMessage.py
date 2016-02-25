@@ -13,6 +13,14 @@ def showConfirmation(message):
     win = GraphWin("Well done!", 400, 400);
     win.setBackground("white")
 
+    messageDisplay = ""
+
+    for i in range(len(message)):
+        if i % 20 is 0:
+            messageDisplay += message[i] + "\n"
+        else:
+            messageDisplay += message[i]
+
     #Create the top bar that will serve as a header, including color and text
     #topBar
     topBar = Rectangle(Point(0,0), Point(400, 100))
@@ -20,7 +28,7 @@ def showConfirmation(message):
     topBar.setOutline('#0088FF')
     topBar.draw(win)
 
-    messageText = Text(Point(win.getWidth()/2, win.getHeight()/2), message)
+    messageText = Text(Point(win.getWidth()/2, win.getHeight()/2), messageDisplay)
     messageText.setSize(20)
     messageText.setTextColor("#222244")
     messageText.draw(win)
