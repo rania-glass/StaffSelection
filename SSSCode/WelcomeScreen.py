@@ -5,6 +5,7 @@ from GUI import ErrorMessage, ConfirmationMessage
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from Modules import CreateFolders
+from Modules import ParseApplications
 
 
 currentpath = os.path.realpath(__file__)
@@ -43,7 +44,7 @@ def button(color, height, width, locationX, locationY):
 def welcome():
 
     #create the window to place elements into
-    win = GraphWin("Super Staff Selection Software!", 800, 600)
+    win = GraphWin("Super Staff Selection Software!", 800, 800)
     win.setBackground("#FFFFFF")
 
     #Create the top bar that will serve as a header, including color and text
@@ -55,18 +56,18 @@ def welcome():
     #Draw the buzz logo and write the dedication information
     #buzzLogo
     #forTech
-    buzzLogo = Image(Point(710, 435), graphicspath+"\\buzz.gif")
+    buzzLogo = Image(Point(710, 635), graphicspath+"\\buzz.gif")
 
-    forTech = Text(Point(700, 510), "This software developed for \n Georgia Tech Housing"
+    forTech = Text(Point(700, 710), "This software developed for \n Georgia Tech Housing"
         + ": Staff and \n Community Development")
     forTech.setTextColor("gray")
     forTech.setSize(10)
 
     #Create the settings button
     #settingsText
-    settings = button("#BBBBBB", 40, 120, 645, 550)
+    settings = button("#BBBBBB", 40, 120, 645, 750)
     settings.draw(win)
-    settingsText = Text(Point(705, 570), "Settings")
+    settingsText = Text(Point(705, 770), "Settings")
     settingsText.setTextColor("white")
     settingsText.setSize(14)
 
@@ -91,31 +92,42 @@ def welcome():
     #create the buttons
     button1 = button("#0088FF", 75, 250, 268, 195)
     button1.draw(win)
-    text1 = Text(Point(394, 228), "Create Candidate Directory")
+    text1 = Text(Point(394, 228), "Create Applicant Pool")
     text1.setTextColor("white")
     text1.setSize(14)
     text1.draw(win)
 
-    button2 = button("#0088FF", 75, 250, 268, 295)
-    button2.draw(win)
-    text2 = Text(Point(394, 328), "Create Candidate Files")
-    text2.setTextColor("white")
-    text2.setSize(14)
+    text2 = Text(Point(394, 298), "This will create a folder for each candidate"
+        + "\n that contains his or her application.")
+    text2.setTextColor("gray")
+    text2.setSize(12)
     text2.draw(win)
 
-    button3 = button("#0088FF", 75, 250, 268, 395)
-    button3.draw(win)
-    text3 = Text(Point(394, 428), "Sort Candidate Files")
+    button2 = button("#0088FF", 75, 250, 268, 345)
+    button2.draw(win)
+    text3 = Text(Point(394, 378), "Sort Candidate Files")
     text3.setTextColor("white")
     text3.setSize(14)
     text3.draw(win)
-
-    button4 = button("#0088FF", 75, 250, 268, 495)
-    button4.draw(win)
-    text4 = Text(Point(394, 528), "Organize A File")
-    text4.setTextColor("white")
-    text4.setSize(14)
+    text4 = Text(Point(394, 468), "This will place the files generated from the input"
+        + "\n into the appropriate folder."
+        + "\n Recommended for recommendations and \n resumes, cover letters, etc.")
+    text4.setTextColor("gray")
+    text4.setSize(12)
     text4.draw(win)
+
+    button3 = button("#0088FF", 75, 250, 268, 545)
+    button3.draw(win)
+    text5 = Text(Point(394, 578), "Organize A File")
+    text5.setTextColor("white")
+    text5.setSize(14)
+    text5.draw(win)
+    text5 = Text(Point(394, 468), "This will place the files generated from the input"
+        + "\n into the appropriate folder."
+        + "\n Recommended for recommendations and \n resumes, cover letters, etc.")
+    text5.setTextColor("gray")
+    text5.setSize(12)
+    text5.draw(win)
 
     ###
     #Settings
@@ -145,12 +157,12 @@ def welcome():
                 info.draw(win)
                 Tk().withdraw() #keep the root window from appearing
                 #Create the directory containing all the candidate folders
-                masterList = askopenfilename()
-                if ".csv" not in masterList[(len(masterList)-4):]:
+                TXTapplist = askopenfilename()
+                if ".txt" not in masterList[(len(masterList)-4):]:
                     #show an error message
-                    ErrorMessage.showError("CSV file required.")
+                    ErrorMessage.showError("Text (.txt) file required.")
                 else:
-                    CreateFolders.createFolders(masterList)
+                    ParseApplications(TXTapplist)
                     #perform make directories on this file
 
             if 295 < p1.getY() < 370:
