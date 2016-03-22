@@ -18,17 +18,12 @@ def getFile():
     print "that you have selected."
 
     if ext == ".csv":
-        print "What would you like to do with this file?"
-        print "Press the key that corresponds to what you want to do."
-        print "1: Separate each row into its own document"
-        print "2: Merge all of the data into a text document"
-        selection = input("Enter your selection, then press 'Enter' ")
-        docCategory = input("Enter the category of tese documents in quotes. (eg ''Recommendations'', ''Applications'', etc)")
+        print "This file can be separated by row into multiple documents. To do that, press '1'."
+        selection = input()
+        docCategory = input("Enter the category of these documents in quotes. (eg ''Recommendations'', ''Applications'', etc)")
         docCategory = str(docCategory)
         if selection == 1:
             handleCSV.separate(inFile, docCategory)
-        elif selection == 2:
-            handleCSV.merge(inFile)
         else:
             print "That is not an option. Let's start over."
             getFile()

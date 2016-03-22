@@ -38,17 +38,25 @@ def separate(filename, docCategory):
     #to change the column that the file is named after, change the '1' in "row[1]"
     #the indices of the rows start at 0, so 0 is the first, and 1 is the second cell
         for row in reader:
-            fileName = directory + "/" + row[1] + " - " + str(docCategory) + ".txt"
-            newFile = file(fileName, "w")
+            fileName = directory + "/" + row[1] + " - " + str(docCategory) + ".doc"
+            if not os.path.exists(fileName):
+                newFile = file(fileName, "w")
 
-            #give user confirmation that something is happening
-            print "Writing data to", os.path.basename(fileName)
+                #give user confirmation that something is happening
+                print "Writing data to", os.path.basename(fileName)
 
-            #for each cell in each row, write that data with matching header to the document
-            for item in range(len(row)):
-                newFile.write("\n" + headers[item] + "\n" + str(row[item]) + "\n")
-            newFile.close()
+                #for each cell in each row, write that data with matching header to the document
+                for item in range(len(row)):
+                    newFile.write("\n" + headers[item] + "\n" + str(row[item]) + "\n")
+                newFile.close()
+            else:
+                fileName = directory + "/" + row[1] + " - " + str(docCategory) + "2.doc"
+                newFile = file(fileName, "w")
 
+                #give user confirmation that something is happening
+                print "Writing data to", os.path.basename(fileName)
 
-def merge(filename):
-    return 0
+                #for each cell in each row, write that data with matching header to the document
+                for item in range(len(row)):
+                    newFile.write("\n" + headers[item] + "\n" + str(row[item]) + "\n")
+                newFile.close()
