@@ -4,6 +4,8 @@ from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from Messages import PrintMessages
 from Modules import handleCSV
+from Modules import Sorter
+from Modules import SortFileByName
 
 
 
@@ -31,11 +33,19 @@ def getFile():
     elif ext == ".txt":
         print "This file can be separated by GTID. Press '1' to perform this operation."
         selection = input()
-        handleTXT(selection, inFile)
+        docCategory = str(input("Enter the category of these documents in quotes. (eg ''Recommendations'', ''Applications'', etc)"))
+        Sorter.sortApps(inFile, docCategory)
 
     else:
         print "Try again with a .txt or a .csv file."
         getFile()
+
+    dirpath = os.path.dirname(inFile)
+    dirpath += "/Files_Created/"
+
+    path = dirpath
+    SortFileByName.sort(path)
+
 
 
 getFile()

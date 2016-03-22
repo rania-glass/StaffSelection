@@ -50,7 +50,8 @@ def separate(filename, docCategory):
                     newFile.write("\n" + headers[item] + "\n" + str(row[item]) + "\n")
                 newFile.close()
             else:
-                fileName = directory + "/" + row[1] + " - " + str(docCategory) + "2.doc"
+                #row [1] and row[2] should be last name, first name respectively
+                fileName = directory + "/" + row[1] + ", " + row[2] + " - " + str(docCategory) + "2.doc"
                 newFile = file(fileName, "w")
 
                 #give user confirmation that something is happening
